@@ -80,33 +80,21 @@ body{
 }
  
 .container{
-  margin-top: 100px;
+  margin-top: 80px;
   width: 98%;
 }
 
- .pic{
+  .pic{
   padding: 10px 10px 15px;
   background: white;
   border: 1px solid #ddd;
   box-shadow: 2px 2px 3px rgba( 50, 50, 50, 0.4); 
-}  
+}   
 
 *{
 	box-sizing: border-box;
 }
 
-h1{
-	width: 100%;
-	height: 60px;
-	margin: 0;
-	line-height: 60px;
-	background-color: #fff;
-	box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
-	position: fixed;
-	top: 0;
-	left: 0;
-	text-align: center;
-}
 .picture{
 	width: 98%;
 	margin: 10px auto;
@@ -117,6 +105,7 @@ h1{
 	-moz-column-count: 4;
 	column-gap: 20px;
 }
+
 .picture li{
 	list-style-type: none;
 	margin-top: 10px;
@@ -125,7 +114,7 @@ h1{
 .picture li img{
 	width: 100%;
 	height: auto;
-}
+} 
 
 .dim {
   padding: 0 2px;
@@ -152,9 +141,6 @@ h1{
   transition:all 1s ease;
   transform: translateY(100%);
   color: #FFF;
-  /* padding-left: 3%; */
-  /* padding-right: -6%; */
-  padding-top: 1%;
 }
 
 .imgbox:hover:after{
