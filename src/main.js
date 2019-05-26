@@ -5,6 +5,9 @@ import App from './App'
 import VueRouter from 'vue-router'
 import routes from './routes.js'
 import Login from './views/Login'
+import jquery from 'jquery'
+
+window.$ = window.jQuery = jquery
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)

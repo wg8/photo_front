@@ -24,20 +24,31 @@ import { photoList } from '../api/api';
     data() {
       return {
         page: 1,
-        size: 20,
+        size: 10,
         photoLists: {},
         text0: '2018年5月20日'+'，'+'吃的很开心'
       }
     },
     created: function () {
-      this.handlePhotoList()
+      this.handlePhotoList(this.page);
+      this.page++;
+      var self = this;
+      $(window).scroll(function(){
+        let scrollTop = $(this).scrollTop()
+        let scrollHeight = $(document).height()
+        let windowHeight = $(this).height()
+        if(100+scrollTop >=scrollHeight - windowHeight){
+           var newPage = self.page++
+          self.handlePhotoList(newPage)
+        }
+      })
     },
     mounted: function () {
     },
     methods:{
-      handlePhotoList: function(){
+      handlePhotoList: function(newPage){
         let postData = {
-          page: this.page,
+          page: newPage,
           size: this.size
         }
         photoList(postData).then(result => {
@@ -67,7 +78,7 @@ import { photoList } from '../api/api';
         }
         result.data.photoBO[i].photoText = '❤   '+result.data.photoBO[i].photoTime + '    '+result.data.photoBO[i].photoDescribe
         }
-        this.photoLists = result.data.photoBO
+        this.photoLists = [...this.photoLists,...result.data.photoBO];
       },
     }
   }
