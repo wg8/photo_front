@@ -2,65 +2,8 @@
   <div>
     <div class="container">
       <ul class="picture">
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src0" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src1" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src2" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src3" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src4" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src5" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src3" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src2" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src0" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src1" class="pic"></el-image>
-          </div>
-        </li>
-        <li>
-          <div class="imgbox" :data-text="text0">
-            <el-image :src="src4" class="pic"></el-image>
-          </div>
-        </li>
-      </ul>
-      <ul class="picture">
         <li v-for="(photo,index) in photoLists" :key="index">
-          <div class="imgbox" :data-text="text0">
+          <div class="imgbox" :data-text='photo.photoText'>
             <el-image :src='photo.photoPath' class="pic"></el-image>
           </div>
         </li>
@@ -82,18 +25,9 @@ import { photoList } from '../api/api';
     data() {
       return {
         page: 1,
-        size: 10,
+        size: 20,
         photoLists: {},
-
-        src0: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558815038830&di=7ee7c2d07b2cc2388ff85d83d3d37986&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201812%2F23%2F20181223144806_dwZrM.thumb.700_0.jpeg',
-        src1: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558815038830&di=cec32e5d0046c8b02daa9c2554befe0a&imgtype=0&src=http%3A%2F%2Fm.360buyimg.com%2Fpop%2Fjfs%2Ft26038%2F35%2F221768014%2F45167%2F9b2ca6aa%2F5b696d12N423c75c6.jpg',
-        src2: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558815038829&di=f2cb1deceabbb0d3f353036e4dcade38&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201805%2F03%2F20180503101224_tnuwu.thumb.700_0.jpg',
-        src3: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558815038829&di=5d015f8fd56cefde094b85073bbbb002&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201806%2F04%2F20180604090459_gqqjo.jpg',
-        src4: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558815038829&di=96a6e1aac70facc9e79f02f042ed3e38&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201810%2F24%2F20181024231235_8fTZ4.thumb.700_0.jpeg',
-        src5: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558815038829&di=ce6b6b070bafb6f1f098e012d70cdaae&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-08-08%2F5b6aa318a9f15.jpg',
-
         text0: '2018年5月20日'+'，'+'吃的很开心'
-
       }
     },
     created: function () {
@@ -124,8 +58,15 @@ import { photoList } from '../api/api';
         for (let i = 0; i < result.data.photoBO.length; i++) {
           result.data.photoBO[i].id = result.data.photoBO[i].id
           result.data.photoBO[i].photoPath = result.data.photoBO[i].photoPath
-          result.data.photoBO[i].photoTime = result.data.photoBO[i].photoTime
-          result.data.photoBO[i].photoDescribe = result.data.photoBO[i].photoDescribe
+          // result.data.photoBO[i].photoTime = result.data.photoBO[i].photoTime
+          // result.data.photoBO[i].photoDescribe = result.data.photoBO[i].photoDescribe
+          if (result.data.photoBO[i].photoTime == null){
+            result.data.photoBO[i].photoTime = ''
+          }
+          if(result.data.photoBO[i].photoDescribe == null){
+            result.data.photoBO[i].photoDescribe = ''
+          }
+          result.data.photoBO[i].photoText = '❤   '+result.data.photoBO[i].photoTime + '    '+result.data.photoBO[i].photoDescribe
          }
          this.photoLists = result.data.photoBO
       },
@@ -211,7 +152,8 @@ h1{
   transition:all 1s ease;
   transform: translateY(100%);
   color: #FFF;
-  padding-left: 3%;
+  /* padding-left: 3%; */
+  /* padding-right: -6%; */
   padding-top: 1%;
 }
 
