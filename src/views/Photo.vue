@@ -9,7 +9,6 @@
         </li>
       </ul>
     </div>
-
     <Title></Title>
   </div>
 </template>
@@ -54,21 +53,21 @@ import { photoList } from '../api/api';
               }
             });
       },
-        changeResultList: function (result) {
-        for (let i = 0; i < result.data.photoBO.length; i++) {
-          result.data.photoBO[i].id = result.data.photoBO[i].id
-          result.data.photoBO[i].photoPath = result.data.photoBO[i].photoPath
-          // result.data.photoBO[i].photoTime = result.data.photoBO[i].photoTime
-          // result.data.photoBO[i].photoDescribe = result.data.photoBO[i].photoDescribe
-          if (result.data.photoBO[i].photoTime == null){
-            result.data.photoBO[i].photoTime = ''
-          }
-          if(result.data.photoBO[i].photoDescribe == null){
-            result.data.photoBO[i].photoDescribe = ''
-          }
-          result.data.photoBO[i].photoText = '❤   '+result.data.photoBO[i].photoTime + '    '+result.data.photoBO[i].photoDescribe
-         }
-         this.photoLists = result.data.photoBO
+      changeResultList: function (result) {
+      for (let i = 0; i < result.data.photoBO.length; i++) {
+        result.data.photoBO[i].id = result.data.photoBO[i].id
+        result.data.photoBO[i].photoPath = result.data.photoBO[i].photoPath
+        // result.data.photoBO[i].photoTime = result.data.photoBO[i].photoTime
+        // result.data.photoBO[i].photoDescribe = result.data.photoBO[i].photoDescribe
+        if (result.data.photoBO[i].photoTime == null){
+          result.data.photoBO[i].photoTime = ''
+        }
+        if(result.data.photoBO[i].photoDescribe == null){
+          result.data.photoBO[i].photoDescribe = ''
+        }
+        result.data.photoBO[i].photoText = '❤   '+result.data.photoBO[i].photoTime + '    '+result.data.photoBO[i].photoDescribe
+        }
+        this.photoLists = result.data.photoBO
       },
     }
   }
@@ -108,7 +107,7 @@ body{
 
 .picture li{
 	list-style-type: none;
-	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .picture li img{
