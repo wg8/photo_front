@@ -26,10 +26,17 @@ import { photoList } from '../api/api';
         page: 1,
         size: 10,
         photoLists: {},
-        text0: '2018年5月20日'+'，'+'吃的很开心'
+        text0: '2018年5月20日'+'，'+'吃的很开心',
       }
     },
     created: function () {
+      let w = document.documentElement.offsetWidth || document.body.offsetWidth;
+      if(w <= 1000){
+        pictureNum: 'picture2'
+      }else{
+        pictureNum: 'picture4'
+      }
+
       this.handlePhotoList(this.page);
       this.page++;
       var self = this;
@@ -52,17 +59,16 @@ import { photoList } from '../api/api';
           size: this.size
         }
         photoList(postData).then(result => {
-              this.logining = false;
-              let { msg, code, data } = result;
-              if (code !== 0) {
-                this.$message({
-                  message: msg,
-                  type: 'error'
-                });
-              } else {
-                this.changeResultList(result)
-              }
-            });
+            this.logining = false;
+            if (result.code !== 0) {
+              this.$message({
+                message: result.msg,
+                type: 'error'
+              });
+            } else {
+              this.changeResultList(result)
+            }
+        });
       },
       changeResultList: function (result) {
       for (let i = 0; i < result.data.photoBO.length; i++) {
@@ -93,18 +99,15 @@ body{
   margin-top: 80px;
   width: 98%;
 }
-
   .pic{
   padding: 10px 10px 15px;
   background: white;
   border: 1px solid #ddd;
   box-shadow: 2px 2px 3px rgba( 50, 50, 50, 0.4); 
 }   
-
 *{
 	box-sizing: border-box;
 }
-
 .picture{
 	width: 98%;
 	margin: 10px auto;
@@ -115,17 +118,14 @@ body{
 	-moz-column-count: 4;
 	column-gap: 20px;
 }
-
 .picture li{
 	list-style-type: none;
 	margin-bottom: 10px;
 }
-
 .picture li img{
 	width: 100%;
 	height: auto;
 } 
-
 .dim {
   padding: 0 2px;
     left:0; 
@@ -133,12 +133,10 @@ body{
     width:260px; 
     background-color:rgba (0,0,0,0.5);
 }
-
 .imgbox{
   position:relative;
   overflow: hidden;
 }
-
 .imgbox:after{
   position:absolute;
   left: 0px;
@@ -152,7 +150,6 @@ body{
   transform: translateY(100%);
   color: #FFF;
 }
-
 .imgbox:hover:after{
   transform: translateY(75%);
 } 
