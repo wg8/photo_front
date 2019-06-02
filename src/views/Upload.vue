@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     uploadImage: function(){
-        return 'http://47.95.236.106:8081/baby_web/photo/upload/image'
+        return 'http://47.95.236.106:80/baby_web/photo/upload/image'
     },
     handleAvatarSuccess(result){
         this.photoPath = result.data;
