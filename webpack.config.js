@@ -58,7 +58,7 @@ module.exports = (options = {}) => ({
     host: '127.0.0.1',
     port: 8010,
     proxy: {
-      '/baby': {
+      '/baby_web': {
         target: 'http://47.95.236.106:8081/',
         changeOrigin: true,
         secure:false,
