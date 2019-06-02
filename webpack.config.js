@@ -10,7 +10,7 @@ module.exports = (options = {}) => ({
     index: './src/main.js'
   },
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'baby'),
     filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
     chunkFilename: '[id].js?[chunkhash]',
     publicPath: options.dev ? '/assets/' : publicPath
@@ -55,16 +55,22 @@ module.exports = (options = {}) => ({
     extensions: ['.js', '.vue', '.json', '.css']
   },
   devServer: {
-    host: '192.168.2.98',
+    host: '127.0.0.1',
     port: 8010,
     proxy: {
-      '/api/': {
-        target: 'http://127.0.0.1:8080',
+      '/baby': {
+        target: 'http://127.0.0.1:8081/',
         changeOrigin: true,
+        secure:false,
         pathRewrite: {
-          '^/api': ''
+          '^/baby': '',
         }
       }
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization, Cookie"
     },
     historyApiFallback: {
       index: url.parse(options.dev ? '/assets/' : publicPath).pathname

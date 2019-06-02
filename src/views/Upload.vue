@@ -11,14 +11,14 @@
                 :on-success="handleAvatarSuccess"
                 multiple
                 :auto-upload="true">
-            <i class="el-icon-upload"></i>
+            <i class="el-icon-upload" ></i>
 
             <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
             </el-upload>
         <div class="photoTime">
             <div class="block">
                 <el-date-picker
-                style="width:360px"
+                style="width:300px"
                 v-model="photoDate"
                 type="date"
                 format="yyyy 年 MM 月 dd 日"
@@ -29,7 +29,7 @@
         </div>
         <div class="photoDescribe">
            <el-input
-            style="width:360px"
+            style="width:300px"
             type="textarea"
             :autosize="{ minRows: 2, maxRows: 4}"
             placeholder="请输入内容"
@@ -37,7 +37,7 @@
             </el-input>
         </div>
         <div class="btn">
-            <el-button type="primary" @click="newSubmitForm" style="width:360px">提交</el-button>
+            <el-button type="primary" @click="newSubmitForm" style="width:300px">提交</el-button>
         </div>
   </div>
 </div>
@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     uploadImage: function(){
-        return 'http://192.168.2.98:8081/baby/photo/upload/image'
+        return 'http://127.0.0.1:8081/baby/photo/upload/image'
     },
     handleAvatarSuccess(result){
         this.photoPath = result.data;
