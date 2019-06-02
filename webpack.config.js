@@ -59,7 +59,7 @@ module.exports = (options = {}) => ({
     port: 8010,
     proxy: {
       '/baby': {
-        target: 'http://127.0.0.1:8081/',
+        target: 'http://47.95.236.106:8081/',
         changeOrigin: true,
         secure:false,
         pathRewrite: {

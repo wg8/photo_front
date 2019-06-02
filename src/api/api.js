@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let base = 'http://127.0.0.1:8081/baby';
+let base = 'http://47.95.236.106:8081/baby';
 
 export const requestLogin = params => { 
     axios.defaults.withCredentials = false;
